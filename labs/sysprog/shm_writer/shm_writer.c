@@ -76,9 +76,10 @@ int main(int argc, char *argv [])
         if (FD_ISSET(hnd.gpsfd, &fdset))
         {
             int bytes = read(hnd.gpsfd, buff, sizeof(buff));
-
+	    
             if (bytes > 0)
                 decode_frame(buff);
+		printf("%d\n",bytes);
         }
     }
 
