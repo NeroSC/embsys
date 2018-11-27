@@ -48,17 +48,21 @@ Dans le cadre de débug de programmes d’équipements distants.
 
 **Question 1** : Implémentez dans le fichier hook.c la fonction à l'origine du problème repéré au sein du simulateur GPS mais cette fois-çi sans erreur.
 
+cf code https://github.com/NeroSC/embsys
 
 
 **Question 2** : Éditez le Makefile pour compiler *hook.c* sous la forme d'une librairie partagée nommée *libhook.so* (s'inspirer de *gps/src/lib/ptmx/Makefile*). Testez la compilation.
 
+Ca marche bien.
 
 
 **Question 3** : Éditez le fichier *run.sh* pour utiliser LD_PRELOAD au moment de lancer le simulateur et ainsi hooker le binaire avec la librairie libhook.so. Exécutez run.sh : le simulateur ne doit plus partir en segfault.
 
+cf code https://github.com/NeroSC/embsys
 
 
 **Question 4** : Utilisez le *man* pour déterminer le prototype de la fonction *printf* (expliquez comment vous utilisez *man* dans ce cas et pourquoi). Comment est appelé ce type de fonction?
+
 int printf(const char* format, ...);
 les “...” signifient que printf est une fonction variadique. On peut faire afficher autant de variables que l’on veut.
 
