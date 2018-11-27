@@ -31,7 +31,7 @@ open(), select(), read(), close() il s'agit du multiplexage.
 
 **Question 5** : Modifiez le code de *reader.c* afin qu'il puisse écouter les trames provenant de deux simulateurs GPS différents (ports paramétrables au lancement). Vérifiez le bon fonctionnement enlançant deux instances du simulateur GPS.
         
-Ca marche bien !
+Ca marche bien ! cf code https://github.com/NeroSC/embsys
 
 
 **Question 6** : Utilisez *syslog* pour afficher l'heure dans la console ainsi que le PID du père.
