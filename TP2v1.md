@@ -52,10 +52,15 @@ Dans le cadre de débug de programmes d’équipements distants.
 
 **Question 2** : Éditez le Makefile pour compiler *hook.c* sous la forme d'une librairie partagée nommée *libhook.so* (s'inspirer de *gps/src/lib/ptmx/Makefile*). Testez la compilation.
 
+
+
 **Question 3** : Éditez le fichier *run.sh* pour utiliser LD_PRELOAD au moment de lancer le simulateur et ainsi hooker le binaire avec la librairie libhook.so. Exécutez run.sh : le simulateur ne doit plus partir en segfault.
 
 
+
 **Question 4** : Utilisez le *man* pour déterminer le prototype de la fonction *printf* (expliquez comment vous utilisez *man* dans ce cas et pourquoi). Comment est appelé ce type de fonction?
+int printf(const char* format, ...);
+les “...” signifient que printf est une fonction variadique. On peut faire afficher autant de variables que l’on veut.
 
 **Question 5** : Analysez *gps/src/bin/gps/gps.c* er repérez où se trouve le gestionnaires de signaux. Décrivez les fonctions utilisez ainsi que les signaux gérés.
 
@@ -98,6 +103,5 @@ ce TP, nous allons utiliser *minicom*.
 
 **Question 3** : Utiliser minicom pour capturer un extrait de la
                  communication dans un fichier.
-
 
 
