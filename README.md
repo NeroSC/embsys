@@ -1,23 +1,9 @@
-# EMBSYS
+# Embsys
 
-This repository stores my lectures and labs on GNU/Linux for embedded systems
-with some reminders in system programming.
+The reports are available in the three files : TP1v1.md, TP2v1.md et TP3v1.md.
 
-## Lectures
+# Labs
 
-Lectures are separated in several parts:
+### sysprog
 
-  * Introduction : licenses, POSIX, opensource vs free software, ...
-  * Linux System Programming : processus, pthread, signals, mutex, IPC, ...
-  * Kernel architectures and Linux module programming
-  * Bus and communication devices : PCI, I2C, RS232, ...
-  * Memory and file system
-  * Embedded systems tools and compilation steps : busybox, buildroot, yocto, uboot
-
-## Labs
-
-Several exercises are available :
-
-  * GNU/Linux System Programming
-  * Embedded system with RPI3
-  * Usefool Tools (autotools, docker, git, ...)
+The modified codes are available in the gps, gps_reader and shm_writer files 
