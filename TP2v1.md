@@ -81,31 +81,3 @@ les “...” signifient que printf est une fonction variadique. On peut faire a
 **Question 7** : Comment faire pour interrompre le processus étant donné que ce dernier ne répond plus au Ctrl-C? Citez deux méthodes.
 
 **Question 8** : En regardant le fichier *gps/Makefile*, que pouvez-vous dire de la règle *ok*? À quoi sert-elle et comment fonctionne-t-elle?
-
-### À retenir
-
-  * comment utiliser le *man*
-  * la mise en place d'un gestionnaire de signaux grâce à *sigaction*
-  * l'utilité et le fonctionnement de *LD_PRELOAD*
-
-
-## Exercice 3 : Terminal série (minicom)
-
-Dans le cas d'une communication série avec du matériel, il est toujours
-intéressant d'observer les trames. En effet, on peut par exemple comprendre un
-protocole de communication grâce à de la rétro ingénierie. Pour cela, il existe
-des programmes tel que *gtkterm*, *PuTTY*, *picocom* et bien d'autres. Lors de
-ce TP, nous allons utiliser *minicom*.
-
-**Question 1** : Grâce à l'aide en ligne de commande de *minicom* (option
-                 *-h*), se connecter au port du simulateur GPS et observez les
-                 trames passées.
-
-**Question 2** : Naviguez dans l'aide de minicom (Ctrl-A Z) pour récupérer la
-                 configuration du port de communication. Expliquez brièvement
-                 la signification de ces paramètres.
-
-**Question 3** : Utiliser minicom pour capturer un extrait de la
-                 communication dans un fichier.
-
-
