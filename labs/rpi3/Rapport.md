@@ -1,95 +1,58 @@
+Thomas Le Masson
+Corentin Néron
+
 # Partie 1: Construction d'OS avec Buildroot et chaine de cross-compilation
 
-Dans cette partie, nous allons voir comment recompiler *from scratch*
-un système d'exploitation pour la RPI3 dans un conteneur Docker.
 
-### Préliminaires
 
-Tout d'abord, téléchargez l'image Docker suivante:
 
-````
-$ sudo docker rmi pblottiere/embsys-rpi3-buildroot
-$ sudo docker pull pblottiere/embsys-rpi3-buildroot
-````
+**Question 1**: 
+==============
 
-Ensuite, créez un conteneur à partir de cette image et listez les fichiers
-contenus dans */root/*:
 
-````
-$ sudo docker run -it pblottiere/embsys-rpi3-buildroot /bin/bash
-# ls /root/
-buildroot-precompiled-2017.08.tar.gz
-````
+'configs/embsys_defconfig':
 
-### Découverte de Buildroot
+'busybox.config':
 
-La tarball `buildroot-precompiled-2017.08.tar.gz` est une version modifiée de
-la version officielle de Buildroot disponible ici:
-https://buildroot.org/downloads/buildroot-2017.08.tar.gz.
+'users.table': contient l'utilisateur, le groupe auquel il appartient, ainsi que le repo dans lequel il évolue.
 
-Vous pouvez considérer cette tarball comme un
-[BSP](https://en.wikipedia.org/wiki/Board_support_package) construit
-spécifiquement pour répondre aux besoins du TP.
+**Question 2**: 
+==============
 
-Par rapport à la version officielle, il y a notamment en plus:
-- un fichier de configuration `configs/embsys_defconfig` pour Buildroot
-- un fichier de configuration pour busybox `busybox.config`
-- un fichier décrivant les utilisateurs cibles `users.table`
+Le fichier de configuration Buildroot à utiliser : *configs/raspberrypi3_defconfig/*
 
-De plus, toutes les dépendances de compilation sont déjà installées dans
-l'image Docker et le système d'exploitation est précompilé (pour gagner du
-temps).
 
-Décompressez la tarball pour étudier son contenu et retrouver les fichiers
-cités précédement:
+**Question 3**: 
+===============
 
-````
-# tar zxvf buildroot-precompiled-2017.08.tar.gz
-# cd buildroot-precompiled-2017.08
-````
+Le répertoire package contient différentes informations pour chaque application/process installés, fichier config, .hash et .mk
 
-**Question 1**: Décriver de manière plus précise l'utilité ainsi que la syntaxe
-                de chacun des 3 fichiers mentionnés ci-dessus.
+**Question 4**: 
+==============
 
-Par défaut, le projet Buildroot fournit des configurations pour certaines
-cartes dans le répertoire *configs*.
+**Question 5**:
+==============
 
-**Question 2**: En considérant que la cible est une carte RaspberryPi3 avec un
-                OS 32 bits, quel est le fichier de configuration Buildroot par
-                défaut à utiliser?
 
-**Question 3**: Que contient le répertoire *package*?
 
-**Question 4**: Décrivez l'utilité des différents fichiers du répertoire
-                *package/openssh*.
+**Question 6**
+==============
 
-**Question 5**: À quoi servent les fichiers du répertoire
-                *boards/raspberrypi3*?
+La commande #make embsys_defconfig permet de définir les options de compilation et de lancement à appliquer. 
 
-Désormais, lancez la commande suivante:
-
-```
-# make embsys_defconfig
-```
-
-**Question 6**: À quoi sert la commande précédente?
-
-Maintenant, lancez la commande suivante pour afficher le menu de configuration:
-
-````
-# make menuconfig
-````
 
 **Question 7**: En naviguant dans le menu, repérez:
-- l'architecture matérielle cible
-- le CPU ciblé
-- l'ABI (en rappellant la signification de celle choisie)
+- l'architecture matérielle cible :arch/Config.in:261 
+- le CPU ciblé :  arch/Config.in:273
+- l'ABI (en rappellant la signification de celle choisie) : EABIhf 
+arch/Config.in.arm:351                                                          │  
+Depends on: <choice> && BR2_ARM_CPU_HAS_VFPV2 [=y] 
 - la librairie C utilisée
 - la version du cross-compilateur
-- la version du kernel
+- la version du kernel : Defined at package/linux-headers/Config.in.host:78                                         │  
+  │   Depends on: BR2_TOOLCHAIN_BUILDROOT [=y] && BR2_KERNEL_HEADERS_VERSION [=n] 
 
-Il est possible de rechercher une chaine de caractère avec la commande */*
-(comme dans VIM).
+.
 
 **Question 8**: En recherchant dans l'interface de Buildroot, déterminez si le
                 paquet *openssh* sera compilé et disponible dans l'OS cible. De
