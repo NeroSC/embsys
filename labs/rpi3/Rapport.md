@@ -30,9 +30,14 @@ Le répertoire package contient différentes informations pour chaque applicatio
 **Question 4**: 
 ==============
 
+*package/openssh*
+
+.hash verifier l'intégrité, .mk makefile, fichiers ssh pour accès à distance sécurisé, fichier config pourles autotools. 
+
 **Question 5**:
 ==============
 
+*boards/rapsberrypi3/*
 
 
 **Question 6**
@@ -42,17 +47,15 @@ La commande #make embsys_defconfig permet de définir les options de compilation
 
 
 **Question 7**: En naviguant dans le menu, repérez:
-- l'architecture matérielle cible :arch/Config.in:261 
-- le CPU ciblé :  arch/Config.in:273
-- l'ABI (en rappellant la signification de celle choisie) : EABIhf 
-arch/Config.in.arm:351                                                          │  
-Depends on: <choice> && BR2_ARM_CPU_HAS_VFPV2 [=y] 
-- la librairie C utilisée
-- la version du cross-compilateur
-- la version du kernel : Defined at package/linux-headers/Config.in.host:78                                         │  
-  │   Depends on: BR2_TOOLCHAIN_BUILDROOT [=y] && BR2_KERNEL_HEADERS_VERSION [=n] 
+- l'architecture matérielle cible : ARM arch/Config.in:261 
+- le CPU ciblé : cortex A63 arch/Config.in:273
+- l'ABI (en rappellant la signification de celle choisie) : EABIhf Embedded ABI Hard Float
+- la librairie C utilisée: uClibc-ng
+- la version du cross-compilateur: gcc 6.x
+- la version du kernel : custom kernel de https://github.com/rapsberrypi/linux.git
 
-.
+
+
 
 **Question 8**: En recherchant dans l'interface de Buildroot, déterminez si le
                 paquet *openssh* sera compilé et disponible dans l'OS cible. De
