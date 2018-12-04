@@ -64,7 +64,7 @@ cartes dans le répertoire *configs*.
                 *package/openssh*.
 
 **Question 5**: À quoi servent les fichiers du répertoire
-                *boards/raspberrypi3*?
+                *board/raspberrypi3*?
 
 Désormais, lancez la commande suivante:
 
@@ -81,7 +81,7 @@ Maintenant, lancez la commande suivante pour afficher le menu de configuration:
 ````
 
 **Question 7**: En naviguant dans le menu, repérez:
-- l'architecture matérielle cible
+- l'architecture matérielle cible ARCH
 - le CPU ciblé
 - l'ABI (en rappellant la signification de celle choisie)
 - la librairie C utilisée

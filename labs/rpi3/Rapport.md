@@ -37,8 +37,8 @@ Le répertoire package contient différentes informations pour chaque applicatio
 **Question 5**:
 ==============
 
-*boards/rapsberrypi3/*
-
+*board/raspberrypi3/*
+contient les fichiers de config pour raspberrypi et les fichiers de lancement du build.
 
 **Question 6**
 ==============
@@ -57,19 +57,18 @@ La commande #make embsys_defconfig permet de définir les options de compilation
 
 
 
-**Question 8**: En recherchant dans l'interface de Buildroot, déterminez si le
-                paquet *openssh* sera compilé et disponible dans l'OS cible. De
-                même, retrouver cette information en analysant le fichier de
-                configuration *embsys_defconfig*.
+**Question 8**: 
+Fichier configuration embsys_defconfig :BR2_PACKAGE_OPENSSH=y
+           
 
 **Question 9**: Qu'est ce que busybox? À quoi sert la commande
                 *make busybox-menuconfig*? Qu'obtiens t'on et que pouvons
                 nous faire?
 
-Par défaut, le bootloader de la RPI3 est utilisé. D'ailleurs, vous pouvez
-constater en allant dans le menu *Bootloaders* de l'interface de
-configuration qu'aucun bootloader n'est actuellement sélectionné. Nous
-verrons dans la partie suivante comment utiliser U-Boot à la place.
+Busybox est un logiciel qui implémente des commandes standard sous linux.
+*make busybox-menuconfig* permet de lancer le terminal de configuration 
+
+
 
 ### Chaîne de cross-compilation
 
@@ -83,6 +82,10 @@ l'image Docker que nous utilisons.
 
 **Question 10**: Que contient le répertoire *output/host*? À quoi correspond
                  le binaire *output/host/usr/bin/arm-linux-gcc*?
+
+*output/host*
+Système de fichier linux de l'OS cible précompilé
+
 
 Sur le conteneur Docker, créez un fichier *helloworld.c*:
 
