@@ -1,4 +1,4 @@
-Thomas Le Masson
+Thomas le Masson
 Corentin Néron
 
 # Partie 1: Construction d'OS avec Buildroot et chaine de cross-compilation
