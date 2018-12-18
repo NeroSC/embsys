@@ -1,3 +1,6 @@
+Thomas le Masson
+Corentin Néron
+
 # Partie 2: QEMU
 
 Dans cette partie, nous allons voir comment se servir de chroot et QEMU pour
@@ -17,6 +20,10 @@ $ docker run -it --privileged pblottiere/embsys-rpi3-buildroot /bin/bash
 
 **Question 1**: À quoi sert l'option *--cap-add* lors du lancement d'un
                 nouveau coneneur Docker?
+
+*--cap-add* sert à ajouter une capacité Linux non autorisée par défaut telles que : 
+	SYS_MODULE Load and unload kernel modules.
+	SYS_RESOURCE 	Override resource Limits.
 
 ### QEMU et chroot
 
