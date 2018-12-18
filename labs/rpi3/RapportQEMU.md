@@ -25,48 +25,15 @@ $ docker run -it --privileged pblottiere/embsys-rpi3-buildroot /bin/bash
 	SYS_MODULE Load and unload kernel modules.
 	SYS_RESOURCE 	Override resource Limits.
 
-### QEMU et chroot
-
-Tout d'abord, il faut installer les paquets nécessaires pour utiliser QEMU dans
-le conteneur Docker:
-
-````
-# apt-get update
-# apt-get install binfmt-support qemu-user-static
-````
-
-Ensuite créez un simple fichier C et compilez le avec le cross-compilateur
-fourni par Buildroot (cf [Partie 1](buildroot.md)):
-
-````
-# printf '#include <stdio.h>\nint main(){ printf("Hello Worlds!"); }\n' > hw.c
-# ./output/host/usr/bin/arm-linux-gcc hw.c -o hw
-````
-
-Puis, pour émuler le RFS d'une carte ARM avec QEMU:
-
-````
-# mkdir -p /tmp/rootfs
-# tar -xf output/images/rootfs.tar -C /tmp/rootfs
-# cp hw /tmp/rootfs/
-# cd /tmp/rootfs
-# mount --bind /dev dev/
-# mount --bind /proc proc/
-# cp /usr/bin/qemu-arm-static usr/bin/
-# chroot . bin/busybox ash
-root@hostname:  $
-````
 
 **Question 2**: À quoi sert la commande *chroot*?
+
+*chroot* Change Root, permet de changer de répertoire racine vers un nouvel emplacement. 
 
 Ensuite, exécutez le binaire cross-compilé *hw* dans l'environnement *chroot*.
 
 **Question 3**: Que se passe-t-il? Pourquoi?
 
-Finalement, sortir de l'environnement du chroot (Ctrl-D) et démonter les
-volumes:
+Le fichier s'exécute et affiche Hello Worlds dans la console puisqu'on a compilé le fichier à l'aide de arm-linux-gcc.
 
-````
-$ umount /tmp/rootfs/dev
-$ umount /tmp/rootfs/proc
-````
+
