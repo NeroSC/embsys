@@ -23,21 +23,21 @@ echo 1 > value
 **Question 2**: Utilisez cette API Python pour allumer/éteindre la LED
                 connectée à la GPIO 17 (faire attention au mode BCM ou BOARD).
 
-">>> import RPi.GPIO as GPIO
-">>> GPIO.setmode(GPIO.BOARD)
-">>> GPIO.setup(11, GPIO.OUT)
-">>> GPIO.output(11,GPIO.HIGH)
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT)
+GPIO.output(11,GPIO.HIGH)
 
 ### PWM
 
 **Question 3**: Modifiez la fréquence et le duty_cycle pour faire varier la
                 luminosité de votre LED.
-">>> import RPi.GPIO as GPIO
-">>> GPIO.setmode(GPIO.BOARD)
-">>> GPIO.setup(12, GPIO.OUT)
-">>> p = GPIO.PWM(12, 0.5)
-">>> p.start(1)
-">>> p.stop()
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(12, GPIO.OUT)
+p = GPIO.PWM(12, 0.5)
+p.start(1)
+p.stop()
 
 ## Relais
 
@@ -52,8 +52,8 @@ echo out > direction
 echo 1 > value  
 
 Python: 
-">>> import RPi.GPIO as GPIO
-">>> GPIO.setmode(GPIO.BOARD)
-">>> GPIO.setup(7, GPIO.OUT)
-">>> GPIO.output(7,GPIO.HIGH)
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(7, GPIO.OUT)
+GPIO.output(7,GPIO.HIGH)
                 
